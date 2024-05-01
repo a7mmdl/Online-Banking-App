@@ -1,10 +1,10 @@
 # Integrated Online Banking System (Falcon-Finance-Bank)
 ## Ahmed Rafi - 2118961 - SEC 6201 - Undergraduate Project
 
-## Overview
+## Overview 👨🏻‍💻
 The online banking is a web-based application developed using Django, designed to meet various aspects of online banking. The application allows Online banking users to carry out banking tasks online without the need to visit a physical bank branch, all with an attractive and easy-to-use interface.
 
-## Features
+## Features ⚙️
 - **Fund Transfer**: Transfer funds to your friends, relatives, etc., by just typing their account number and the amount.
 
 - **Authentication/Registration**: Register yourself as a new banking customer online or login to the system to use all the unique features.
@@ -15,7 +15,7 @@ The online banking is a web-based application developed using Django, designed t
 
 - **Pay Bills**: View and pay all your bills (utility, electric, net, etc.) from our online banking platform, and the amount shall be deducted from your account balance.
 
-## Built with
+## Built with 🛠️
 - **Django**: A dynamic framework for crafting web applications used in the back-end development of this application.
 
 - **HTML/CSS/JS**: Technologies used for the front-end development of this project (rendering Django-Templates).
@@ -33,7 +33,7 @@ The online banking is a web-based application developed using Django, designed t
 - **Google SMTP Server**: A reliable and secure email delivery service provided by Google, used to send user email during forget-password facility.
 
 
-## Installation
+## Installation ⬇️
 To set up and run the Falcon Finance Online Banking System on Local-Host, follow these steps:
 
 1. Download the folder "TESTBANK" into your local machine.
@@ -70,13 +70,13 @@ To set up and run the Falcon Finance Online Banking System on Local-Host, follow
     python manage.py runserver
     ```
 
-7. Access the Online Bank web-application using your web browser at http://localhost:8000.
+7. Access the Online Bank web-application using your web browser at http://localhost:8000. ✅
 
-## Guidelines On Usage:
+## Guidelines On Usage: 📖
 ### Admin Panel
 - Access the admin panel at http://localhost:8000/admin using the superuser credentials created earlier. Here, you can manage users, their transactions, send notifications, view user inquiries, and many more.
 
-## UI
+## UI 👁️
 ### Home Page (dark)
 [![HomePage.png](https://i.postimg.cc/W1Wmzszw/HomePage.png)](https://postimg.cc/21WLXR41)
 
@@ -104,5 +104,5 @@ To set up and run the Falcon Finance Online Banking System on Local-Host, follow
 ### ContactUs Page
 [![Contact-Us.png](https://i.postimg.cc/Dy2Bzvn8/Contact-Us.png)](https://postimg.cc/yWbFQzJH)
 
-## Contributing
+## Contributing ✨
 Contributions to this project are welcome! If you find a bug or have an enhancement in mind, please open an issue or create a pull request, or contact me on WhatsApp +971556683794.
