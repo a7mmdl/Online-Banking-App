@@ -36,6 +36,7 @@ To set up and run the Falcon Finance Online Banking System on Local-Host, follow
     ```
 
 5. Install tailwind to build CSS (new terminal):
+   
     5.1 Just run the following command:
         ```bash
         npm install
