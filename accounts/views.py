@@ -13,7 +13,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db.models import Sum
-from django.contrib.auth import authenticate, login  # Import authenticate and login functions
+from django.contrib.auth import authenticate, login  
 from decimal import ROUND_DOWN, ROUND_HALF_UP, Decimal, InvalidOperation
 from django.db import IntegrityError
 from datetime import date, timedelta
@@ -71,7 +71,7 @@ def register(request):
         email = request.POST.get('email')
         phone_number = request.POST.get('phone_number')
         account_type = request.POST.get('account_type')
-        account_number = request.POST.get('account_number')  # New field for account number
+        account_number = request.POST.get('account_number')  
         password = request.POST.get('password')
 
         if all([first_name, last_name, username, email, phone_number, account_type, account_number, password]):
@@ -1315,7 +1315,7 @@ def issue_health_insurance(request):
         account_number = request.POST.get('account_number')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
-        number_of_people = int(request.POST.get('number_of_people'))  # Convert to integer
+        number_of_people = int(request.POST.get('number_of_people'))  # Converting to integer
         
         # Calculate total price based on the number of people
         price_per_person = 3000  # 3000 AED per person

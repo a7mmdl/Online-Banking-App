@@ -44,7 +44,7 @@ class Notification(models.Model):
 
     def save(self, *args, **kwargs):
         if self.send_to_all:
-            # Exclude admin user from the list
+           
             all_users = User.objects.exclude(is_staff=True)
             for user in all_users:
                 Notification.objects.create(user=user, message=self.message)
@@ -66,7 +66,7 @@ class DailyTransfer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    transfer_limit = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # New field for transfer limit
+    transfer_limit = models.DecimalField(max_digits=10, decimal_places=2, default=0)  
 
     def __str__(self):
         return f"{self.user.username} - {self.date} - {self.total_amount}"
@@ -158,11 +158,11 @@ class Installment(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     paid = models.BooleanField(default=False)
     selected = models.BooleanField(default=False)
-    installment_date = models.DateField(null=True)  # Add this field
+    installment_date = models.DateField(null=True) 
 
     def save(self, *args, **kwargs):
         if not self.installment_date:
-            # Calculate installment date based on the current date and installment number
+        
             current_date = timezone.now().date()
             self.installment_date = current_date + timedelta(days=30 * (self.installment_number - 1))
         super().save(*args, **kwargs)
