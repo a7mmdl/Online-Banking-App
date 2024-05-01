@@ -1,4 +1,4 @@
-# Integrated Online Banking System (Falcon-finance-bank)
+# Integrated Online Banking System (Falcon-Finance-Bank)
 ## Ahmed Rafi - 2118961 - SEC 6201 - Undergraduate Project
 
 ## Overview
