@@ -40,6 +40,7 @@ To set up and run the Falcon Finance Online Banking System on Local-Host, follow
         ```bash
         npm install
         ```
+
     5.2 Build the CSS using tailwindcss and continue looking for changes:
         ```bash
         npm run dev
