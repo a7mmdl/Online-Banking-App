@@ -15,6 +15,24 @@ The online banking is a web-based application developed using Django, designed t
 
 - **Pay Bills**: View and pay all your bills (utility, electric, net, etc.) from our online banking platform, and the amount shall be deducted from your account balance.
 
+## Built with
+- **Django**: A dynamic framework for crafting web applications used in the back-end development of this application.
+
+- **HTML/CSS/JS**: Technologies used for the front-end development of this project (rendering Django-Templates).
+
+- **FlowBite**: An Tailwind-css component library used to achieve polish results on front-end of this application giving user attractive and easy to use interface.
+
+- **Stripe**: A famous world-wide used payment gateway allowing for secure and efficient transactions used in this application to provide users will features such as loan-repayment, card-issuance fees, Pay insurance fees, etc.
+
+- **Tailwind CSS**: A utility-first CSS framework that streamlines web development by providing a vast array of pre-built classes for rapid styling, Helping us to reach the modern look for our app.
+
+- **Streamlit**: The go-to platform for effortless creation of interactive data applications, enabling developers to transform data into engaging visualizations with just a few lines of code. Hosted our AI-Chatbot to assist banking-users
+
+- **SQLite**: A lightweight yet powerful database engine seamlessly integrated into the Django framework, used to store our users-data such as transactions, account-balance securely and safely.
+
+- **Google SMTP Server**: A reliable and secure email delivery service provided by Google, used to send user email during forget-password facility.
+
+
 ## Installation
 To set up and run the Falcon Finance Online Banking System on Local-Host, follow these steps:
 
