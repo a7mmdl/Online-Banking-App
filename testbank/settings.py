@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os, stripe
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,18 +22,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ea)9$x07r3x_s%i!@t+81@d#5ijj70390!1446+&5ps&y0rp5!"
-
+from dotenv import load_dotenv
+load_dotenv()
+SECRET_KEY = os.environ.get('SECRET_KEY')
+stripe.api_key = os.environ.get('STRIPE_API_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['1363-2001-8f8-147b-eae0-cc10-8995-c37b-b90d.ngrok-free.app']
+#CSRF_TRUSTED_ORIGINS = ['https://1363-2001-8f8-147b-eae0-cc10-8995-c37b-b90d.ngrok-free.app']
+
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    'material',
+    'material.admin',
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -40,7 +49,6 @@ INSTALLED_APPS = [
     "accounts",
     'compressor', 
     'tailwind',
-
 ]
 
 MIDDLEWARE = [
@@ -68,6 +76,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'accounts.custom_context_processors.notifications',
 
             ],
         },
@@ -84,6 +93,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+        'TIME_ZONE': 'Asia/Dubai',
     }
 }
 
@@ -112,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Asia/Dubai'
 
 USE_I18N = True
 
@@ -142,3 +152,17 @@ STATICFILES_FINDERS = (
 
 
  # ('compressor.finders.CompressorFinder',) 
+
+LOGIN_URL = '/login/'
+
+
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Change this to your SMTP server address
+EMAIL_PORT = 587  # Change this to your SMTP port
+EMAIL_USE_TLS = True  # Change this according to your SMTP settings
+EMAIL_HOST_USER = '0423rafi@gmail.com'  # Change this to your SMTP username
+EMAIL_HOST_PASSWORD = 'foor pltz qycu pzmb'

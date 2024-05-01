@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<div class="flex justify-center items-center h-screen">
+    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-[-20px]">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Calculate Exchange Rate</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here you can calculate accurate currency exchange rates updated daily.</p>
+        <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
+        <input type="number" id="amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Amount" />
+        <br>
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+            <div class="from">
+                <label for="from" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">From</label>
+                <select id="from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </select>
+            </div>
+            <div class="to">
+                <label for="to" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">To</label>
+                <select id="to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <!-- Options will be added dynamically through JavaScript -->
+                </select>
+            </div>
+        </div>
+        <div class="flex justify-center items-center"> <!-- New div to center elements -->
+            <button id="searchBtn" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-24 py-2.5 text-center mb-6 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="width: auto;">Search</button>
+        </div>
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <div class="flex justify-center">
+            <h5 class="exchange_rate mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"></h5>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    let country_list = {
+        AED: "AE",
+        AFN: "AF",
+        XCD: "AG",
+        ALL: "AL",
+        AMD: "AM",
+        ANG: "AN",
+        AOA: "AO",
+    AQD: "AQ",
+    ARS: "AR",
+    AUD: "AU",
+    AZN: "AZ",
+    BAM: "BA",
+    BBD: "BB",
+    BDT: "BD",
+    XOF: "BE",
+    BGN: "BG",
+    BHD: "BH",
+    BIF: "BI",
+    BMD: "BM",
+    BND: "BN",
+    BOB: "BO",
+    BRL: "BR",
+    BSD: "BS",
+    NOK: "BV",
+    BWP: "BW",
+    BYR: "BY",
+    BZD: "BZ",
+    CAD: "CA",
+    CDF: "CD",
+    XAF: "CF",
+    CHF: "CH",
+    CLP: "CL",
+    CNY: "CN",
+    COP: "CO",
+    CRC: "CR",
+    CUP: "CU",
+    CVE: "CV",
+    CYP: "CY",
+    CZK: "CZ",
+    DJF: "DJ",
+    DKK: "DK",
+    DOP: "DO",
+    DZD: "DZ",
+    ECS: "EC",
+    EEK: "EE",
+    EGP: "EG",
+    ETB: "ET",
+    EUR: "FR",
+    FJD: "FJ",
+    FKP: "FK",
+    GBP: "GB",
+    GEL: "GE",
+    GGP: "GG",
+    GHS: "GH",
+    GIP: "GI",
+    GMD: "GM",
+    GNF: "GN",
+    GTQ: "GT",
+    GYD: "GY",
+    HKD: "HK",
+    HNL: "HN",
+    HRK: "HR",
+    HTG: "HT",
+    HUF: "HU",
+    IDR: "ID",
+    ILS: "IL",
+    INR: "IN",
+    IQD: "IQ",
+    IRR: "IR",
+    ISK: "IS",
+    JMD: "JM",
+    JOD: "JO",
+    JPY: "JP",
+    KES: "KE",
+    KGS: "KG",
+    KHR: "KH",
+    KMF: "KM",
+    KPW: "KP",
+    KRW: "KR",
+    KWD: "KW",
+    KYD: "KY",
+    KZT: "KZ",
+    LAK: "LA",
+    LBP: "LB",
+    LKR: "LK",
+    LRD: "LR",
+    LSL: "LS",
+    LTL: "LT",
+    LVL: "LV",
+    LYD: "LY",
+    MAD: "MA",
+    MDL: "MD",
+    MGA: "MG",
+    MKD: "MK",
+    MMK: "MM",
+    MNT: "MN",
+    MOP: "MO",
+    MRO: "MR",
+    MTL: "MT",
+    MUR: "MU",
+    MVR: "MV",
+    MWK: "MW",
+    MXN: "MX",
+    MYR: "MY",
+    MZN: "MZ",
+    NAD: "NA",
+    XPF: "NC",
+    NGN: "NG",
+    NIO: "NI",
+    NPR: "NP",
+    NZD: "NZ",
+    OMR: "OM",
+    PAB: "PA",
+    PEN: "PE",
+    PGK: "PG",
+    PHP: "PH",
+    PKR: "PK",
+    PLN: "PL",
+    PYG: "PY",
+    QAR: "QA",
+    RON: "RO",
+    RSD: "RS",
+    RUB: "RU",
+    RWF: "RW",
+    SAR: "SA",
+    SBD: "SB",
+    SCR: "SC",
+    SDG: "SD",
+    SEK: "SE",
+    SGD: "SG",
+    SKK: "SK",
+    SLL: "SL",
+    SOS: "SO",
+    SRD: "SR",
+    STD: "ST",
+    SVC: "SV",
+    SYP: "SY",
+    SZL: "SZ",
+    THB: "TH",
+    TJS: "TJ",
+    TMT: "TM",
+    TND: "TN",
+    TOP: "TO",
+    TRY: "TR",
+    TTD: "TT",
+    TWD: "TW",
+    TZS: "TZ",
+    UAH: "UA",
+    UGX: "UG",
+    USD: "US",
+    UYU: "UY",
+    UZS: "UZ",
+    VEF: "VE",
+    VND: "VN",
+    VUV: "VU",
+    YER: "YE",
+    ZAR: "ZA",
+    ZMK: "ZM",
+    ZWD: "ZW",
+    };
+
+    let dropList = document.querySelectorAll("select");
+    let fromCurrency = document.getElementById("from");
+    let toCurrency = document.getElementById("to");
+    let exchangeTxt = document.querySelector(".exchange_rate");
+    let getBtn = document.getElementById("searchBtn");
+
+    // Adding options dynamically
+    for (let currency_code in country_list) {
+        let optionTagFrom = `<option value="${currency_code}">${currency_code}</option>`;
+        let optionTagTo = `<option value="${currency_code}">${currency_code}</option>`;
+        fromCurrency.insertAdjacentHTML("beforeend", optionTagFrom);
+        toCurrency.insertAdjacentHTML("beforeend", optionTagTo);
+    }
+
+    getBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        getExchangeValue();
+    });
+
+    function getExchangeValue() {
+        const amount = document.getElementById("amount").value;
+        exchangeTxt.innerText = "Getting exchange rate...";
+        let apiKey = "87e23caec8789e29b31c90b1"; // My API key
+        let url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency.value}`;
+        fetch(url)
+            .then((response) => response.json())
+            .then((result) => {
+                let exchangeRate = result.conversion_rates[toCurrency.value];
+                let total = (amount * exchangeRate).toFixed(2);
+                exchangeTxt.innerText = `${amount} ${fromCurrency.value} = ${total} ${toCurrency.value}`;
+            })
+            .catch(() => {
+                exchangeTxt.innerText = "something went wrong";
+            });
+    }
+
+    window.addEventListener("load", () => {
+        getExchangeValue();
+    });
+
+    let icon = document.querySelector(".icon");
+    icon.addEventListener("click", () => {
+        let tempCode = fromCurrency.value;
+        fromCurrency.value = toCurrency.value;
+        toCurrency.value = tempCode;
+        getExchangeValue();
+    });
+</script>
+
+
+
+
+{% endblock content %}

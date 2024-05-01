@@ -1,0 +1,288 @@
+  {% extends "base.html" %}
+
+  {% block content %}
+
+  <div class="max-w-screen-xl mx-auto px-4">
+  <nav class="flex" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+        <li class="inline-flex items-center">
+          <a href="{% url 'index' %}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+            </svg>
+            <span class="ml-1">Home</span>
+          </a>
+        </li>
+        
+        <li class="inline-flex items-center">
+          <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"></path>
+            </svg>
+          <a href="{% url 'request_loan' %}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+            
+                
+          Issue Loan
+          </a>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">View Your Loans</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+    {% if messages %}
+    {% for message in messages %}
+      <div class="flex items-center p-4 mb-4 text-sm rounded-lg {% if message.tags == 'success' %}text-green-800 bg-green-50{% elif message.tags == 'error' %}text-red-800 bg-red-50{% endif %} dark:bg-gray-800 dark:text-green-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div class="ml-2"> <!-- Add margin to the left -->
+          <span class="font-medium">{{ message }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+
+  {% if user.is_authenticated %}
+    <h2 class="text-4xl font-extrabold dark:text-white text-center mt-4 mb-8">Welcome To View My Loans, {{ user.first_name }} {{ user.last_name }}!</h2>
+    
+    {% endif %}
+
+    <div class="max-w-screen-xl mx-auto px-4">
+    <div class="sm:hidden">
+      <label for="tabs" class="sr-only">Select your page</label>
+      <select id="tabs" onchange="window.location.href = this.value;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value="{% url 'request_loan' %}">Issue Loan</option>
+          <option value="{% url 'view_loans' %}">View Your Loans</option>
+      </select>
+  </div>
+  <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+      <li class="w-full focus-within:z-10">
+          <a href="{% url 'request_loan' %}" class="inline-block w-full p-4 bg-white border-r border-gray-200 dark:border-gray-700 hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700">Issue Loan</a>
+      </li>
+      <li class="w-full focus-within:z-10">
+          <a href="{% url 'view_loans' %}" class="inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 dark:border-gray-700 rounded-s-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" aria-current="page">View Your Loans</a> </li>
+  </li>
+  </ul>
+</div>
+
+    <br>
+    <br>
+    <div class="max-w-screen-xl mx-auto px-4">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      {% if loans %}
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-6 py-3">
+                      Username
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Loan amount
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Issue Date
+                  </th>
+                  
+                  <th scope="col" class="px-6 py-3">
+                      Action
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for loan in loans %}
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      {{ loan.user.username }}
+                  </th>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-400">
+                    Interest Amount: {{ loan.interest_amount|floatformat:"2" }} AED <br>
+                    Total Amount To Be Paid: {{ loan.loan_amount }} AED <br>
+                    <!-- Total Amount To Be Paid: {{ loan.loan_amount|add:loan.interest_amount|floatformat:"2" }} AED -->
+                </td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-400">
+                      {{ loan.created_at }}
+                  </td>
+                  <td class="px-6 py-4">                    
+                  
+                      <!-- Display payment form -->
+                      <form method="post" action="{% url 'pay_loan' %}">
+                          {% csrf_token %}
+                          <input type="hidden" name="loan_id" value="{{ loan.id }}">
+                          <label for="payment_amount" class="block mb-2 text-sm font-medium text-gray-800 dark:text-white">Enter Amount You Want To Pay</label>
+                          <input type="number" required="" name="payment_amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter payment amount">
+                         <br>
+                          <button type="submit" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">
+                              Pay
+                          </button>
+                      </form>
+                        {% if loan.show_delete_button %}
+                    <!-- Display delete button -->
+                    <form id="delete-form-{{ loan.id }}" method="post" action="{% url 'view_loans' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="loan_id" value="{{ loan.id }}">
+                        <button type="submit" class="delete-button text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                            Cancel
+                        </button>
+                        <div id="timer-{{ loan.id }}"></div>
+                    </form>
+                    {% endif %}
+                    <form method="get" action="{% url 'pay_with_installments' loan.id %}">
+                      <button type="submit" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
+                          Pay with Installments
+                      </button>
+                  </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          
+
+          </tbody>
+      </table>
+      {% else %}
+      <div class="flex justify-center items-center h-full">
+          <p class="text-center text-gray-500 dark:text-gray-400 text-sm">No loan records found.</p>
+      </div>
+      {% endif %}
+      </div>
+      <div class="container mx-auto flex flex-col items-center justify-center">
+      <blockquote class="p-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-400 text-center mt-4">
+          <p class="italic font-medium leading-relaxed mt-1">"You can cancel your loan within 1 minute."</p>
+         
+      </blockquote>
+      </div>
+      </div>
+      
+
+  <script>
+    {% for loan in loans %}
+    // Check if the button status is stored in session storage
+    var btnStatus = sessionStorage.getItem('loan_button_{{ loan.id }}');
+    
+    // If button status is not stored
+    if (!btnStatus) {
+        // Set a timeout to hide the button after 30 seconds
+        setTimeout(function () {
+            var btn = document.getElementById('delete-form-{{ loan.id }}');  // Corrected ID
+            if (btn) {
+                btn.style.display = 'none';  // Hide the button
+                // Store button status in session storage
+                sessionStorage.setItem('loan_button_{{ loan.id }}', 'hidden');
+            }
+        }, 30000);  // 30 seconds in milliseconds
+    } else {
+        // If button status is stored, hide the button immediately
+        var btn = document.getElementById('delete-form-{{ loan.id }}');  // Corrected ID
+        if (btn) {
+            btn.style.display = 'none';  // Hide the button
+        }
+    }
+    {% endfor %}
+</script>
+
+
+<script>
+  // Function to start or resume the countdown timer
+  function startOrResumeTimer(duration, display, loanId) {
+      var timer = getCookie('timer_' + loanId);
+      if (timer) {
+          timer = parseInt(timer); // Convert stored timer to integer
+      } else {
+          timer = duration; // If no timer found in cookie, start from initial duration
+      }
+
+      var minutes, seconds;
+      setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          display.textContent = minutes + ":" + seconds;
+
+          // Check if the timer has reached 0
+          if (--timer < 0) {
+              timer = duration;
+              eraseCookie('timer_' + loanId); // Remove timer from cookie when it reaches 0
+          } else {
+              setCookie('timer_' + loanId, timer); // Update timer in cookie every second
+          }
+      }, 1000); // Update the timer every second
+  }
+
+  // Function to set a cookie
+  function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  // Function to get a cookie value
+  function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+  }
+
+  // Function to erase a cookie
+  function eraseCookie(name) {
+      document.cookie = name + '=; Max-Age=-99999999;';
+  }
+
+  // Function to add timer element below the delete button
+  function addTimerBelowDeleteButton() {
+      // Get all delete forms
+      var deleteForms = document.querySelectorAll('[id^="delete-form-"]');
+
+      // Loop through each delete form
+      deleteForms.forEach(function(form) {
+          // Get loan ID from form's ID
+          var loanId = form.id.split('-')[2];
+
+          // Create timer element
+          var timerDiv = document.createElement('div');
+          timerDiv.id = 'timer-' + loanId;
+
+          // Get the parent element (td) to append the timer
+          var parentTd = form.parentElement;
+
+          // Append timer below the delete button
+          parentTd.appendChild(timerDiv);
+
+          // Set the duration of the countdown timer (30 seconds)
+          var duration = 30;
+
+          // Get the countdown timer element
+          var countdownTimer = document.getElementById('timer-' + loanId);
+
+          // Start or resume the countdown timer
+          startOrResumeTimer(duration, countdownTimer, loanId);
+      });
+  }
+
+  // Call the function to add timer below the delete button when the page loads
+  addTimerBelowDeleteButton();
+</script>
+
+
+    
+    
+  {% endblock content %}
