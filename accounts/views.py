@@ -35,7 +35,6 @@ from django.contrib.auth import get_user_model
 from django.utils.http import urlsafe_base64_decode
 import logging
 
-#stripe.api_key = "sk_test_51NDroPIh1B4tQ2x2a6dFn3y3F6AycTVM7PPX2wSg6kUaIE4U97nHWFlmSLvCtIkBqCfJSGBcSNEF8FhK7AfXYAAa00pebUdeNP"
 
 def index(request):
     if request.method == 'POST':
