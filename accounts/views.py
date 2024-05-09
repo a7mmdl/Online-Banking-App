@@ -35,6 +35,7 @@ from django.contrib.auth import get_user_model
 from django.utils.http import urlsafe_base64_decode
 import logging
 
+#stripe.api_key = "sk_test_51NDroPIh1B4tQ2x2a6dFn3y3F6AycTVM7PPX2wSg6kUaIE4U97nHWFlmSLvCtIkBqCfJSGBcSNEF8FhK7AfXYAAa00pebUdeNP"
 
 def index(request):
     if request.method == 'POST':
@@ -76,12 +77,12 @@ def register(request):
 
         if all([first_name, last_name, username, email, phone_number, account_type, account_number, password]):
             try:
-                # Check if account number already exists
+                # Checking if account number already exists
                 existing_profile = UserProfile.objects.filter(account_number=account_number).exists()
                 if existing_profile:
                     raise IntegrityError  # Raise IntegrityError if account number already exists
 
-                # Create the user instance first
+                # Creating the user instance first
                 user = User.objects.create_user(
                     username=username,
                     email=email,
@@ -89,7 +90,7 @@ def register(request):
                     first_name=first_name,
                     last_name=last_name,
                 )
-                # Now create the associated UserProfile
+                # Now creating the associated UserProfile
                 profile = UserProfile.objects.create(
                     user=user,
                     phone_number=phone_number,
@@ -420,7 +421,7 @@ def contact_us(request):
 def request_loan(request):
     # Define the maximum loan amount
     MAX_LOAN_AMOUNT = Decimal('1000000')  # 1 million
-    MIN_LOAN_AMOUNT = Decimal('20')
+    MIN_LOAN_AMOUNT = Decimal('2000')
 
     if request.method == 'POST':
         # Check if user already has 3 loans
@@ -437,7 +438,7 @@ def request_loan(request):
         try:
             loan_amount = Decimal(loan_amount_str)
             if loan_amount < MIN_LOAN_AMOUNT:
-                messages.error(request, "Minimum loan amount is 20 AED.")
+                messages.error(request, "Minimum loan amount is 2000 AED.")
                 return render(request, 'request_loan.html')
         except InvalidOperation:
             return render(request, 'request_loan.html', {'error': 'Invalid loan amount'})
@@ -578,7 +579,12 @@ def pay_loan(request):
 
         # Check if the payment amount is equal to the interest amount
         if payment_amount == interest_amount:
-            messages.error(request, "Please enter an amount greater or lesser than the interest amount.")
+            messages.error(request, "Please enter amount greater than the interest amount, it cannot be equal.")
+            return redirect('view_loans')
+
+        # Check if the payment amount is less than the interest amount
+        if payment_amount < interest_amount:
+            messages.error(request, "Payment amount should be greater than the calculated interest amount.")
             return redirect('view_loans')
 
         # Set up Stripe API
@@ -606,6 +612,7 @@ def pay_loan(request):
         return redirect(session.url)
 
     return redirect('view_loans')
+
 
 
 def payment_success(request):
@@ -667,7 +674,7 @@ def payment_success(request):
                     Transaction.objects.create(user=request.user, amount=-paid_amount_decimal, transaction_type='Loan Fully Repaid')
                     return redirect('view_loans')
 
-                # If remaining amount is greater than 1, display normal success message
+                # If remaining amount is greater than 1, displaying success message
                 messages.success(request, f"Successfully paid {paid_amount} AED. Remaining loan amount: {remaining_loan_amount} AED.")
                 Transaction.objects.create(user=request.user, amount=-paid_amount_decimal, transaction_type='Loan Repayment')
                 return redirect('view_loans')
@@ -682,6 +689,10 @@ def payment_success(request):
         messages.error(request, "Failed to process loan repayment.")
 
     return redirect('view_loans')
+
+
+
+
 
 def payment_cancelled(request):
     messages.warning(request, "Payment cancelled.")
@@ -1952,7 +1963,7 @@ def view_travel_insurance_requests(request):
             messages.error(request, f"An error occurred: {str(e)}")
             return redirect('view_travel_insurance_requests')
 
-    # Render the template with the health insurance requests data
+    # Rendering the template with the health insurance requests data
     return render(request, 'viewtravelinsurance.html', {'travel_insurance_requests': travel_insurance_requests})
 
 

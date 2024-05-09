@@ -1,5 +1,5 @@
 # Integrated Online Banking System (Falcon-Finance-Bank)
-## Ahmed Rafi - 2118961 - SEC 6201 - Undergraduate Project
+## Ahmed Rafi - 2118961 - SEC 6201 - Undergraduate Project - READ ME FILE
 
 ## Overview 👨🏻‍💻
 The online banking is a web-based application developed using Django, designed to meet various aspects of online banking. The application allows Online banking users to carry out banking tasks online without the need to visit a physical bank branch, all with an attractive and easy-to-use interface.
