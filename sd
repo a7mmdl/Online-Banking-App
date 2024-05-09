@@ -1,0 +1,170 @@
+[33mcommit c46f6d8f48fd4da246caa05bc7e60000e2d3092d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Fri May 10 02:43:23 2024 +0400
+
+    chnages
+
+[33mcommit 645e20733deaa14861498501781df100a253c333[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 23:28:40 2024 +0400
+
+    try
+
+[33mcommit 5ca71a4d442e8ad2a01b1c334ec105001c2a8af0[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 23:26:31 2024 +0400
+
+    minor change
+
+[33mcommit 1e154ca79cf931e244edff5b2afa58b663ef33ed[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 23:24:19 2024 +0400
+
+    req
+
+[33mcommit 28a6769ad7fa70ea9201ec9d5bf81325ae884264[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 23:19:46 2024 +0400
+
+    final changes
+
+[33mcommit 46e89821911bc20e9adb04d5bd5149f82186022f[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 23:14:46 2024 +0400
+
+    added env to git ignire
+
+[33mcommit 712d3a649d1e446af813d4ccae66c64493726155[m
+Merge: 4b01ced 5c3d157
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 23:14:11 2024 +0400
+
+    Merge branch 'main' of https://github.com/a7mmdl/Online-Banking-App
+
+[33mcommit 4b01ced1cac2234048f49a9025590f3a5e7787c1[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 23:14:06 2024 +0400
+
+    changes
+
+[33mcommit 5c3d157352a44c2482af6a0d036576984563d256[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 22:45:40 2024 +0400
+
+    Update .env
+
+[33mcommit d0e84bb3457c72b1e16337d7cf728224c0771b14[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 18:16:25 2024 +0400
+
+    chanbed
+
+[33mcommit 48e180d89be3e6108f44843ce2b42c079d8fa91b[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 17:30:22 2024 +0400
+
+    chnages
+
+[33mcommit 56cc3b81bbb93059e2071469377b1d307f843510[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 9 16:32:42 2024 +0400
+
+    finalizing
+
+[33mcommit 1788ca7d6d3472fbae04ffab3b8c8cb6bf11c812[m
+Merge: 435f4ef 36d82d2
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 2 01:27:39 2024 +0400
+
+    Merge branch 'main' of https://github.com/a7mmdl/Online-Banking-App
+
+[33mcommit 435f4ef3a103ebabe777b8174be7bff043ccac7d[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Thu May 2 01:27:34 2024 +0400
+
+    whole lot of stuff
+
+[33mcommit 36d82d25dc81104bed4913c5070fda8818630210[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 17:16:42 2024 +0400
+
+    Update Readme.md
+
+[33mcommit b3d3413edfcc075813216a3c4982c1253b286f72[m
+Merge: a5d24db e155210
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 17:05:57 2024 +0400
+
+    Merge branch 'main' of https://github.com/a7mmdl/Online-Banking-App
+
+[33mcommit a5d24db2a886651b352079a57e31dea6498de67a[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 17:05:53 2024 +0400
+
+    Updated Read Me
+
+[33mcommit e155210f26ca4b9db9eb34821be4686f7a9364d1[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:51:22 2024 +0400
+
+    Update views.py
+
+[33mcommit d8a89d860c77ac34a9f51aa938dedf7de4be3967[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:49:43 2024 +0400
+
+    Few changes
+
+[33mcommit bcbe5a79e95f2346ac65c434ed9ced50cd5bd47b[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:48:53 2024 +0400
+
+    Updated files
+
+[33mcommit 13bc3fc0ee16965dfea1c88002ecbc38af0d2fe2[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:47:22 2024 +0400
+
+    Updated Read Me file
+
+[33mcommit ae512286476fa98dba38ae139614d91499fe8b83[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:45:57 2024 +0400
+
+    Updated requirements file
+
+[33mcommit 81a09d36fb8cbe03eb12737290182962a23f56f1[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:44:03 2024 +0400
+
+    Updated read me
+
+[33mcommit c00255d3946c2f4ff6438fb99017c9d374abf2dc[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:43:49 2024 +0400
+
+    Updated Read-me File
+
+[33mcommit 14724484d78b5f0234317516afbefc392a8678b2[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:36:15 2024 +0400
+
+    Fixed bugs
+
+[33mcommit 5698f77af76f6b3dc7633af8cfb3e114336740ff[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed May 1 16:30:16 2024 +0400
+
+    first commit
+
+[33mcommit b63f04d407e3a65beead3205f6abfe65456a56bb[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed Feb 21 18:01:52 2024 +0400
+
+    new changes
+
+[33mcommit 97b0ca5d5f4a1ac540f4fbdf1cf361fb03fa108e[m
+Author: Ahmed <0423rafi@gmail.com>
+Date:   Wed Feb 21 17:55:43 2024 +0400
+
+    Bank system
