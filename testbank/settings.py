@@ -29,7 +29,7 @@ stripe.api_key = os.environ.get('STRIPE_API_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 #ALLOWED_HOSTS = ['1363-2001-8f8-147b-eae0-cc10-8995-c37b-b90d.ngrok-free.app']
 #CSRF_TRUSTED_ORIGINS = ['https://1363-2001-8f8-147b-eae0-cc10-8995-c37b-b90d.ngrok-free.app']
 
